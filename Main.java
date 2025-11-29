@@ -8,37 +8,38 @@
  * @author m.mejia1
  */
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // -------------------------------
-        // 1. Instancias del problema (FIJAS)
-        // -------------------------------
-        int[] instance = {3, 1, 1, 2, 2, 1, 7, 8, 5, 6, 4, 9};
+        // ------------------------------------------------
+        // 1. Instancia grande del problema
+        // ------------------------------------------------
+        int[] instance = IntStream.range(1, 7001).toArray();
         int replicas = 5;
 
         System.out.println("------------------------------------------------");
-        System.out.println("   EXPERIMENTO SET PARTITION - BACKTRACKING");
-        System.out.println("   IDE: Registrar manualmente según el caso");
+        System.out.println(" EXPERIMENTO SET PARTITION - BACKTRACKING");
+        System.out.println(" IDE: [CAMBIAR]");
         System.out.println("------------------------------------------------");
 
-        // -------------------------------
-        // 2. Ejecutar algoritmo
-        // -------------------------------
+        // ------------------------------------------------
+        // 2. Ejecutar algoritmo con réplicas
+        // ------------------------------------------------
         long avgTime = ExperimentTimer.runReplicas(() -> {
             SetPartitionBacktracking spp = new SetPartitionBacktracking();
             spp.canPartition(Arrays.copyOf(instance, instance.length));
         }, replicas);
 
-        // -------------------------------
-        // 3. Imprimir resultados
-        // -------------------------------
-        System.out.println("Instancia: " + Arrays.toString(instance));
+        // ------------------------------------------------
+        // 3. Resultados
+        // ------------------------------------------------
+        System.out.println("Instancia: (tamaño = " + instance.length + ")");
         System.out.println("Réplicas: " + replicas);
-        System.out.println("Tiempo promedio: " + avgTime / 1_000_000.0 + " ms");
-        System.out.println("Tiempo promedio (ns): " + avgTime);
-        System.out.println("------------------------------------------------");
+        System.out.println("Tiempo promedio (s): " + avgTime / 1_000_000_000.0);
+        System.out.println("Tiempo promedio (min): " + avgTime / 60_000_000_000.0);
+
     }
 }
