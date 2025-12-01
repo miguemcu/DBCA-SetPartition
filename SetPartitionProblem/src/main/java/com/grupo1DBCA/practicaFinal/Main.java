@@ -8,16 +8,24 @@ public class Main {
     // Backtracking básico: explora todas las posibilidades
     public static boolean canPartition(int[] nums) {
         int total = Arrays.stream(nums).sum();
-        if (total % 2 != 0) return false;
+        if (total % 2 != 0) {
+			return false;
+		}
         return backtrack(nums, 0, total / 2);
     }
 
     private static boolean backtrack(int[] nums, int i, int target) {
-        if (target == 0) return true;
-        if (i >= nums.length || target < 0) return false;
+        if (target == 0) {
+			return true;
+		}
+        if (i >= nums.length || target < 0) {
+			return false;
+		}
 
         // tomar
-        if (backtrack(nums, i + 1, target - nums[i])) return true;
+        if (backtrack(nums, i + 1, target - nums[i])) {
+			return true;
+		}
 
         // no tomar
         return backtrack(nums, i + 1, target);
@@ -26,7 +34,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("------------------------------------------------");
         System.out.println("EXPERIMENTO SET PARTITION");
-        System.out.println("Enfoque: Backtracking");
         System.out.println("------------------------------------------------");
 
         int[] arr = IntStream.range(0, 7001).toArray();
