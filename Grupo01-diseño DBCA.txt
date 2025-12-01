@@ -1,0 +1,86 @@
+Link canva: [SAMUEL PILAS PUES MANO]
+
+IMPACTO DEL ENTORNO DE DESARROLLO INTEGRADO (IDE) EN EL TIEMPO DE EJECUCIÓN
+
+1. INTRODUCCIÓN
+
+	El rendimiento de un Entorno de Desarrollo Integrado (IDE) impacta directamente la productividad 
+	del software y el tiempo de respuesta percibido por el usuario en la fase de ejecución. 
+
+	El presente estudio aborda la problemática del tiempo de ejecución completo de un algoritmo complejo,
+	específicamente la solución al Set Partition Problem mediante programación Backtracking en Java.
+
+	Partimos de la hipótesis de que las diferencias arquitectónicas, de compilación y de gestión de recursos entre los IDEs
+	no solo afectan el tiempo de compilación (construcción), sino también el tiempo total de ejecución percibido, lo que
+	influye directamente en la eficiencia del ciclo de desarrollo. Hemos observado experimentalmente que algunos IDEs
+	incurren en un tiempo de "construcción" que incrementa significativamente el tiempo total medido.
+
+	El objetivo principal de esta investigación es determinar si existen diferencias estadísticamente significativas en el tiempo de ejecución
+	 de un mismo programa entre cuatro IDEs de uso común, controlando la variabilidad intrínseca del hardware mediante el uso
+	 de un Diseño de Bloques Completos Aleatorizados (DBCA).
+
+---
+
+2. MARCO TEÓRICO Y DISEÑO EXPERIMENTAL
+
+	2.1. Algoritmo de Prueba: Set Partition Problem
+	El código fuente utilizado implementa el problema de partición de un conjunto (Set Partition Problem), una problema NP-Completo,
+	utilizando un enfoque de Backtracking recursivo. El código opera sobre un conjunto fijo de enteros de 7000 elementos (de 1 a 7000),
+	buscando si es posible dividir el conjunto en dos subconjuntos con sumas iguales. Este algoritmo fue seleccionado
+	por su alta demanda de recursos computacionales, lo que ayuda a amplificar las diferencias de rendimiento entre los tratamientos.
+
+	2.2. Diseño Experimental
+
+	El experimento se estructura bajo un Diseño de Bloques Completo Aleatorizados (DBCA) con un total de
+	16 corridas experimentales (4x4), una por cada combinación única de IDE y Computador.
+
+	Factor de Interés (f.i.): El IDE (Tratamiento)
+	* Tipo: Cualitativo, 4 niveles (a=4).
+	* Justificación: Es la variable cuya influencia sobre la respuesta se desea medir.
+	* Niveles:
+		1.  Apache NetBeans IDE 25
+		2.  IntelliJ IDEA Community Edition 2025.2.5
+		3.  Eclipse 2025-09
+		4.  Visual Studio Code 1.106.3
+
+	Factor de Bloqueo (f.b.): El Computador (Bloque)
+	* Tipo: Cualitativo, 4 niveles (b=4).
+	* Justificación: Aísla la varianza causada por las diferencias en hardware y configuraciones del 
+	sistema operativo, permitiendo comparaciones más precisas entre los IDEs.
+	* Niveles (Especificaciones Clave):
+		* PC 1 (Samuel): [Especificaciones del PC 1]
+		* PC 2 (Mejia): CPU: 12th Gen Intel Core i5 - 1235U; RAM: 16GB; Disco: NVMe SSD.
+		* PC 3 (Miguey): [Especificaciones del PC 3]
+		* PC 4 (Manu): [Especificaciones del PC 4]
+
+	Variable de Respuesta (Y)
+	* Nombre: Tiempo Total de Ejecución (o Tiempo de Respuesta).
+	* Unidad: Segundos (s).
+	* Definición Operacional: Tiempo transcurrido desde el instante exacto en que se presiona el botón "Run" 
+	del IDE hasta que el output final (el mensaje de respuesta del problema) es completamente impreso en la consola 
+	y la ejecución del programa finaliza.
+
+---
+
+3. DESCRIPCIÓN DEL EXPERIMENTO
+
+	3.1. Protocolo de Recolección de Datos
+
+	Para garantizar la pureza y la comparabilidad de las mediciones, se implementó el siguiente protocolo:
+
+	1.  Acondicionamiento del Bloque: Antes de iniciar la serie de 4 ejecuciones en cada computador, el sistema operativo del 
+	PC fue reiniciado. Esto previene la influencia de procesos residuales o caches del sistema operativo dejados por ejecuciones anteriores.
+	
+	2.  Preparación del Entorno: Tras el reinicio, solo se abrió el IDE con el proyecto cargado, 
+	sin otras aplicaciones en ejecución que pudieran consumir recursos.
+	
+	3.  Aleatorización Rigurosa: Para cada computador (bloque), el orden de ejecución de los 4 IDEs se determinó 
+	mediante un orden completamente aleatorio y único. Este orden se reportará en la sección de Análisis Estadístico.
+	
+	4.  Medición Estandarizada: El tiempo fue tomado por un integrante del grupo utilizando un cronómetro digital (celular).
+	La medición se inició con la presión exacta del botón "Run" y se detuvo cuando el mensaje de salida del programa 
+	fue visible de forma completa en la consola, adhiriéndose estrictamente a la definición operacional.
+	
+	5.  Corridas de Calentamiento: Se tomó el tiempo de la primera ejecución tras el reinicio del sistema. 
+	No se realizaron ejecuciones previas de "calentamiento" para asegurar que la medición capture el tiempo total que incluye 
+	la fase de "construcción" y el overhead del IDE, que es parte de la hipótesis del estudio.
