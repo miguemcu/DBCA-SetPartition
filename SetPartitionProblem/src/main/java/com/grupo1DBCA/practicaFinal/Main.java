@@ -36,7 +36,7 @@ public class Main {
         System.out.println("EXPERIMENTO SET PARTITION");
         System.out.println("------------------------------------------------");
 
-        int[] arr = IntStream.range(0, 7001).toArray();
+        int[] arr = IntStream.range(1, 7001).toArray();
 
         int total = Arrays.stream(arr).sum();
         int target = total / 2;
