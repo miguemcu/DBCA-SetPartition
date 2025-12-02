@@ -1,0 +1,13 @@
+tiempo	IDE	PC
+10.7	VSCode	PC1
+7.76	Eclipse	PC1
+11.2	Netbeans	PC1
+10.83	IntelliJ	PC1
+6.41	Eclipse	PC2
+10.84	Netbeans	PC2
+10.28	VSCode	PC2
+9.27	IntelliJ	PC2
+8.98	VSCode	PC3
+5.46	IntelliJ	PC3
+3.28	Eclipse	PC3
+5.08	Netbeans	PC3
