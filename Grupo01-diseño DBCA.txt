@@ -32,7 +32,7 @@ IMPACTO DEL ENTORNO DE DESARROLLO INTEGRADO (IDE) EN EL TIEMPO DE EJECUCIÓN
 	2.2. Diseño Experimental
 
 	El experimento se estructura bajo un Diseño de Bloques Completo Aleatorizados (DBCA) con un total de
-	16 corridas experimentales (4x4), una por cada combinación única de IDE y Computador.
+	12 corridas experimentales (4x3), una por cada combinación única de IDE y Computador.
 
 	Factor de Interés (f.i.): El IDE (Tratamiento)
 	* Tipo: Cualitativo, 4 niveles (a=4).
@@ -44,7 +44,7 @@ IMPACTO DEL ENTORNO DE DESARROLLO INTEGRADO (IDE) EN EL TIEMPO DE EJECUCIÓN
 		4.  Visual Studio Code 1.106.3
 
 	Factor de Bloqueo (f.b.): El Computador (Bloque)
-	* Tipo: Cualitativo, 4 niveles (b=4).
+	* Tipo: Cualitativo, 3 niveles (b=3).
 	* Justificación: Aísla la varianza causada por las diferencias en hardware y configuraciones del 
 	sistema operativo, permitiendo comparaciones más precisas entre los IDEs.
 	* Niveles (Especificaciones Clave):
