@@ -1,5 +1,5 @@
 # SCRIPT DE R PARA ANÁLISIS DE DISEÑO POR BLOQUES COMPLETOS ALEATORIZADOS (DBCA)
-# EXPERIMENTO: TIEMPO DE EJECUCIÓN DEL ALGORITMO SET PARTITION EN 4 IDES Y 4 PCS
+# EXPERIMENTO: TIEMPO DE EJECUCIÓN DEL ALGORITMO SET PARTITION EN 4 IDES Y 3 PCS
 
 #################################################
 # 1. INSTALACIÓN Y CARGA DE PAQUETES
@@ -15,32 +15,14 @@ library(car)
 library(lmtest)
 library(asbio)
 
-#################################################
-# 2. GENERACIÓN DEL ORDEN DE CORRIDAS (Aleatorización)
-#################################################
-
-# Definir los niveles del Factor de Interés (Tratamientos)
-tratamientos <- c('NetBeans','IntelliJ','Eclipse', 'VSCode') # 4 IDEs
-
-# Definir los niveles del Factor de Bloqueo (Computadores)
-bloques <- 4 # 4 Computadores (Bloques)
-
-# Generar el diseño DBCA (Orden de las Corridas)
-# Esta tabla es crucial para el reporte de la aleatorización y la toma de datos
-diseño <- design.rcbd(tratamientos, bloques) 
-
-# Muestra el orden aleatorio.
-# La columna 'plots' define el orden de ejecución en CADA computador (block).
-diseño 
-
 # NOTA: Debe crear un archivo de texto/csv (ej: datos_dbca.txt)
 # con al menos las siguientes columnas:
 # 'tiempo' (variable de respuesta, en segundos)
 # 'IDE' (Factor de Interés, con los nombres de los IDEs)
-# 'PC' (Factor de Bloqueo, con nombres como PC1, PC2, PC3, PC4)
+# 'PC' (Factor de Bloqueo, con nombres como PC1, PC2, PC3)
 
 #################################################
-# 3. LECTURA DE DATOS Y DEFINICIÓN DEL MODELO
+# 2. LECTURA DE DATOS Y DEFINICIÓN DEL MODELO
 #################################################
 
 # Para leer los datos cuando ya se tiene la columna de resultados
@@ -56,7 +38,7 @@ attach(datos)
 mod_dbca <- aov(tiempo ~ IDE + PC, data=datos)
 
 #################################################
-# 4. ANÁLISIS DE VARIANZA (ANOVA)
+# 3. ANÁLISIS DE VARIANZA (ANOVA)
 #################################################
 
 # Tabla ANOVA y Resumen del Modelo
@@ -74,7 +56,7 @@ summary(mod_dbca)
 model.tables(mod_dbca, 'effect')
 
 #################################################
-# 5. EVALUACIÓN DEL FACTOR DE BLOQUEO y ADITIVIDAD
+# 4. EVALUACIÓN DEL FACTOR DE BLOQUEO y ADITIVIDAD
 #################################################
 
 # Evaluación del Factor de Bloqueo (PC)
@@ -88,7 +70,7 @@ model.tables(mod_dbca, 'effect')
 tukey.add.test(datos$tiempo, datos$IDE, datos$PC)
 
 #################################################
-# 6. EVALUACIÓN DE SUPUESTOS
+# 5. EVALUACIÓN DE SUPUESTOS
 #################################################
 
 # Obtener los residuos del modelo
@@ -131,7 +113,7 @@ abline(h=0, lty=2) # En el DBCA se suele centrar en 0
 bartlett.test(tiempo ~ IDE, data=datos)
 
 #################################################
-# 7. GRÁFICOS Y ANÁLISIS DE MEDIAS
+# 6. GRÁFICOS Y ANÁLISIS DE MEDIAS
 #################################################
 
 ## Gráfico de Caja y Bigote (Boxplot) por IDE
@@ -147,7 +129,7 @@ p <- model.tables(mod_dbca, "mean")
 points(p$tables$IDE, pch = 20, cex=1.2)
 
 #################################################
-# 8. PRUEBAS DE COMPARACIÓN MÚLTIPLE
+# 7. PRUEBAS DE COMPARACIÓN MÚLTIPLE
 #################################################
 
 # OJO: DEBE REEMPLAZAR 'Gl_Error' y 'MSE' con los valores obtenidos de su tabla summary(mod_dbca).

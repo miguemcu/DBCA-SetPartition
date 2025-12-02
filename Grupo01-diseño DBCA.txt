@@ -50,8 +50,7 @@ IMPACTO DEL ENTORNO DE DESARROLLO INTEGRADO (IDE) EN EL TIEMPO DE EJECUCIÓN
 	* Niveles (Especificaciones Clave):
 		* PC 1 (Samuel): [Especificaciones del PC 1]
 		* PC 2 (Mejia): CPU: 12th Gen Intel Core i5 - 1235U; RAM: 16GB; Disco: NVMe SSD.
-		* PC 3 (Miguey): [Especificaciones del PC 3]
-		* PC 4 (Manu): [Especificaciones del PC 4]
+		* PC 3 (Manu): [Especificaciones del PC 3]
 
 	Variable de Respuesta (Y)
 	* Nombre: Tiempo Total de Ejecución (o Tiempo de Respuesta).
@@ -68,19 +67,19 @@ IMPACTO DEL ENTORNO DE DESARROLLO INTEGRADO (IDE) EN EL TIEMPO DE EJECUCIÓN
 
 	Para garantizar la pureza y la comparabilidad de las mediciones, se implementó el siguiente protocolo:
 
-	1.  Acondicionamiento del Bloque: Antes de iniciar la serie de 4 ejecuciones en cada computador, el sistema operativo del 
-	PC fue reiniciado. Esto previene la influencia de procesos residuales o caches del sistema operativo dejados por ejecuciones anteriores.
-	
-	2.  Preparación del Entorno: Tras el reinicio, solo se abrió el IDE con el proyecto cargado, 
-	sin otras aplicaciones en ejecución que pudieran consumir recursos.
-	
-	3.  Aleatorización Rigurosa: Para cada computador (bloque), el orden de ejecución de los 4 IDEs se determinó 
+	1.  Aleatorización Rigurosa: Para cada computador (bloque), el orden de ejecución de los 4 IDEs se determinó 
 	mediante un orden completamente aleatorio y único. Este orden se reportará en la sección de Análisis Estadístico.
 	
-	4.  Medición Estandarizada: El tiempo fue tomado por un integrante del grupo utilizando un cronómetro digital (celular).
-	La medición se inició con la presión exacta del botón "Run" y se detuvo cuando el mensaje de salida del programa 
-	fue visible de forma completa en la consola, adhiriéndose estrictamente a la definición operacional.
+	2.  Acondicionamiento del Sistema (Máxima Pureza): Se estableció un protocolo de reinicio estricto para neutralizar 
+	al máximo la variabilidad del sistema operativo. El computador se reinició antes de ejecutar cada uno de los 4 IDEs. 
+	Esto asegura que no queden procesos residuales, caches o servicios abiertos en segundo plano por el IDE o la corrida anterior.
+	
+	3.  Preparación del Entorno: Tras cada reinicio, solo se abrió el IDE correspondiente con el proyecto cargado, 
+	sin otras aplicaciones en ejecución que pudieran consumir recursos.
+	
+	4.  Medición Estandarizada: El tiempo fue tomado por un integrante del grupo utilizando un cronómetro digital (celular). 
+	La medición se inició con la presión exacta del botón "Run" y se detuvo cuando el mensaje de salida del 
+	programa fue visible de forma completa en la consola, adhiriéndose estrictamente a la definición operacional.
 	
 	5.  Corridas de Calentamiento: Se tomó el tiempo de la primera ejecución tras el reinicio del sistema. 
-	No se realizaron ejecuciones previas de "calentamiento" para asegurar que la medición capture el tiempo total que incluye 
-	la fase de "construcción" y el overhead del IDE, que es parte de la hipótesis del estudio.
+	No se realizaron ejecuciones previas de "calentamiento".
