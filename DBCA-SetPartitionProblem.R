@@ -134,15 +134,15 @@ points(p$tables$IDE, pch = 20, cex=1.2)
 
 # OJO: DEBE REEMPLAZAR 'Gl_Error' y 'MSE' con los valores obtenidos de su tabla summary(mod_dbca).
 
-Gl_Error <- # [Grados de Libertad del Error, ej: 9] 
-  MSE <- # [Media Cuadrada del Error (Residuals), ej: 0.936]
-  
-  # --- 8.1. Fisher (Mínima Diferencia Significativa, LSD) ---
-  F_LSD <- LSD.test(datos$tiempo, datos$IDE, Gl_Error, MSE, alpha=0.05, group=TRUE)
-F_LSD
-plot(F_LSD, las=1) # Gráfico de medias y grupos
+Gl_Error <- 6       # Grados de Libertad del Error
+MSE <- 1.246      # Media Cuadrada del Error (MC)
 
-# --- 8.2. Tukey (Diferencia Significativa Honesta, HSD) ---
+# --- 8.1. Fisher (LSD) ---
+F_LSD <- LSD.test(datos$tiempo, datos$IDE, Gl_Error, MSE, alpha=0.05, group=TRUE)
+F_LSD
+plot(F_LSD, las=1) 
+
+# --- 8.2. Tukey (HSD) ---
 Tukey_HSD <- HSD.test(datos$tiempo, datos$IDE, Gl_Error, MSE, group=TRUE)
 Tukey_HSD
 
