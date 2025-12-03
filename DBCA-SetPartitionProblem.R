@@ -105,8 +105,8 @@ shapiro.test(res)
 ### 6.3. Homogeneidad de Varianza (Homocedasticidad)
 
 ## PRUEBA GRÁFICA: Residuales vs. Valores Ajustados
-plot(res, ajustados, las=1, ylab='Valores Ajustados', xlab='Residuales', main='Homogeneidad de Varianza', pch=20)
-abline(h=0, lty=2) # En el DBCA se suele centrar en 0
+plot(res, ajustados, las=1, ylab='Valores Ajustados', xlab='Residuales', main='Varianza Constante', pch=20)
+abline(h=48, lty=2) # En el DBCA se suele centrar en 0
 
 ## PRUEBA NUMÉRICA: Test de Bartlett (solo sobre el factor IDE)
 # H0: La varianza es constante (homogénea) entre los tratamientos (IDEs).
